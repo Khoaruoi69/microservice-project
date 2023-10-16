@@ -25,7 +25,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final WebClient.Builder webClientBuilder;
 
-    public void placeOrder(OrderRequest orderRequest) {
+    public String placeOrder(OrderRequest orderRequest) {
         Order order = new Order();
         order.setOrderNumber(UUID.randomUUID().toString());
 
@@ -54,6 +54,7 @@ public class OrderService {
 
         if(allProductsInStock){
             orderRepository.save(order);
+            return "Order Placed Successfully";
         } else {
             List<InventoryResponse> result = Arrays.stream(inventoryResponseArray).filter(item -> !order.getOrderLineItemsList().contains(item)).collect(Collectors.toList());
             log.info(result.toString());
