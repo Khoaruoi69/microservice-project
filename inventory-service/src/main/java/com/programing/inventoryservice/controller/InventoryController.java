@@ -27,3 +27,7 @@ public class InventoryController {
     }
 
 }
+/*
+*  the worst economic crisis since the war
+*  Tourists brings knowledge from their country to the places they go to.
+* */
